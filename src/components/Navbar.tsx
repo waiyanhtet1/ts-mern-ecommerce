@@ -1,27 +1,24 @@
-import { Badge, Button, Flex, Image, Spacer } from "@chakra-ui/react";
-import { IoCartOutline } from "react-icons/io5";
+import { FiShoppingCart } from "react-icons/fi";
 
-const Navbar = () => {
+function NavbarComponent() {
   return (
-    <Flex bg="gray.100" alignItems="center">
-      <Image
-        boxSize="70px"
-        objectFit="contain"
-        src="/logo.png"
-        alt="Dan Abramov"
-      />
-      <Spacer />
-      <Flex alignItems="center">
-        <Button leftIcon={<IoCartOutline />} variant="ghost" size="lg">
-          <Badge colorScheme="red">5</Badge>
-        </Button>
-
-        <Button colorScheme="teal" variant="ghost">
-          Sign In
-        </Button>
-      </Flex>
-    </Flex>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        <a className="btn btn-ghost text-lg">TSEcommerce</a>
+      </div>
+      <div className="flex">
+        <button className="btn btn-square btn-ghost">
+          <div className="flex">
+            <FiShoppingCart className="w-5 h-5" />
+            <div className="badge badge-secondary badge-sm text-white  ">3</div>
+          </div>
+        </button>
+        <button className="btn btn-square btn-ghost btn-lg text-md">
+          Login
+        </button>
+      </div>
+    </div>
   );
-};
+}
 
-export default Navbar;
+export default NavbarComponent;
