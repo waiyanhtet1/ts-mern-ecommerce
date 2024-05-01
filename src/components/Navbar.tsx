@@ -1,27 +1,26 @@
-import { Badge } from "primereact/badge";
-import { Button } from "primereact/button";
-import { Menubar } from "primereact/menubar";
+import { Badge, Button, Flex, Image, Spacer } from "@chakra-ui/react";
+import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
-  const items = [
-    {
-      label: "TS-AMAZON",
-    },
-  ];
-
-  const end = (
-    <div className="flex align-items-center">
-      <Button icon="pi pi-shopping-cart" text size="large">
-        <Badge value="8" severity="danger"></Badge>
-      </Button>
-      <Button label="Sign In" text size="small" />
-    </div>
-  );
-
   return (
-    <>
-      <Menubar model={items} end={end} />
-    </>
+    <Flex bg="gray.100" alignItems="center">
+      <Image
+        boxSize="70px"
+        objectFit="contain"
+        src="/logo.png"
+        alt="Dan Abramov"
+      />
+      <Spacer />
+      <Flex alignItems="center">
+        <Button leftIcon={<IoCartOutline />} variant="ghost" size="lg">
+          <Badge colorScheme="red">5</Badge>
+        </Button>
+
+        <Button colorScheme="teal" variant="ghost">
+          Sign In
+        </Button>
+      </Flex>
+    </Flex>
   );
 };
 

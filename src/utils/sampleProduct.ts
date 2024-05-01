@@ -5,7 +5,7 @@ function generateProduct(): Product {
   return {
     name: faker.commerce.productName(),
     slug: faker.lorem.slug(),
-    image: faker.image.fashion(),
+    image: faker.image.urlLoremFlickr({ category: "people" }),
     category: faker.helpers.arrayElement(["tshirt", "shoe", "watch"]),
     brand: faker.commerce.productMaterial(),
     price: faker.datatype.number({
