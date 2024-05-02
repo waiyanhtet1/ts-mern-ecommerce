@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
+import { Helmet } from "react-helmet-async";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import ProductCard from "../components/ProductCard";
@@ -36,6 +37,9 @@ const HomePage = () => {
     <MessageBox variant="error" text={error} />
   ) : (
     <div className="flex items-center flex-wrap gap-5 justify-center">
+      <Helmet>
+        <title>TS Ecommerce</title>
+      </Helmet>
       {products.slice(0, 4).map((data, i) => (
         <ProductCard key={i} data={data} />
       ))}
