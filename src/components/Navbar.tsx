@@ -2,7 +2,7 @@ import { FiShoppingCart } from "react-icons/fi";
 
 function NavbarComponent() {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-slate-300">
       <div className="flex-1">
         <a className="btn btn-ghost text-lg">TSEcommerce</a>
       </div>
