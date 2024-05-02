@@ -10,3 +10,14 @@ export type Product = {
   rating: number;
   numReviews: number;
 };
+
+export type ProductState = {
+  products: Product[];
+  loading: boolean;
+  error: string;
+};
+
+export type ProductAction =
+  | { type: "REQUEST" }
+  | { type: "SUCCESS"; payload: Product[] }
+  | { type: "FAIL"; payload: string };
