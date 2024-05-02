@@ -16,8 +16,3 @@ export type ProductState = {
   loading: boolean;
   error: string;
 };
-
-// export type ProductAction =
-//   | { type: "REQUEST" }
-//   | { type: "SUCCESS"; payload: Product[] }
-//   | { type: "FAIL"; payload: string };
