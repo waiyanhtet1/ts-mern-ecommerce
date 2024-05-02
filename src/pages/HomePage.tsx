@@ -4,33 +4,18 @@ import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import {
+  Product_InitialState,
+  Product_Reducer,
+} from "../reducers/productReducer";
 import { APIError } from "../types/APIError";
 import { ProductAction, ProductState } from "../types/Product";
 import { getError } from "../utils/getError";
 
-const initialState: ProductState = {
-  products: [],
-  loading: false,
-  error: "",
-};
-
-const reducer = (state: ProductState, action: ProductAction) => {
-  switch (action.type) {
-    case "REQUEST":
-      return { ...state, loading: true };
-    case "SUCCESS":
-      return { ...state, loading: false, products: action.payload };
-    case "FAIL":
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
 const HomePage = () => {
   const [{ products, loading, error }, dispatch] = useReducer<
     React.Reducer<ProductState, ProductAction>
-  >(reducer, initialState);
+  >(Product_Reducer, Product_InitialState);
 
   useEffect(() => {
     const fetchProduct = async () => {
