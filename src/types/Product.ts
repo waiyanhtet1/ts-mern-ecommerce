@@ -17,7 +17,7 @@ export type ProductState = {
   error: string;
 };
 
-export type ProductAction =
-  | { type: "REQUEST" }
-  | { type: "SUCCESS"; payload: Product[] }
-  | { type: "FAIL"; payload: string };
+// export type ProductAction =
+//   | { type: "REQUEST" }
+//   | { type: "SUCCESS"; payload: Product[] }
+//   | { type: "FAIL"; payload: string };

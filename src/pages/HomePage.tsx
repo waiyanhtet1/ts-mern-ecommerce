@@ -1,34 +1,19 @@
-import axios from "axios";
-import React, { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useAppDispatch, useAppSelector } from "../app/store";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import ProductCard from "../components/ProductCard";
-import {
-  Product_InitialState,
-  Product_Reducer,
-} from "../reducers/productReducer";
-import { APIError } from "../types/APIError";
-import { ProductAction, ProductState } from "../types/Product";
-import { getError } from "../utils/getError";
+import { fetchProducts } from "../redux/productSlice";
 
 const HomePage = () => {
-  const [{ products, loading, error }, dispatch] = useReducer<
-    React.Reducer<ProductState, ProductAction>
-  >(Product_Reducer, Product_InitialState);
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      dispatch({ type: "REQUEST" });
-      try {
-        const result = await axios.get("/api/products");
-        dispatch({ type: "SUCCESS", payload: result.data });
-      } catch (error) {
-        dispatch({ type: "FAIL", payload: getError(error as APIError) });
-      }
-    };
-
-    fetchProduct();
+    dispatch(fetchProducts());
   }, []);
 
   return loading ? (
