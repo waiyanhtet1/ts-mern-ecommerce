@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express, { Express } from "express";
 import connectDB from "./config/dbConfig";
 import productsRoute from "./routes/proudctRoute";
+import { seedRouter } from "./routes/seedRouter";
 
 //For env File
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(
 );
 
 app.use("/api/products", productsRoute);
+app.use("/api/seed", seedRouter);
 
 const port = process.env.PORT || 8000;
 
