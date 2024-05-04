@@ -11,14 +11,13 @@ const ProductPage = () => {
 
   const data = products.find((p) => p.slug === slug);
 
-  console.log(data);
-
   return (
     <div className="flex flex-col md:flex-row gap-10 my-10 mx-5  md:mx-32">
       <Helmet>
         <title>Product Page</title>
         product page
       </Helmet>
+
       <img
         src={data?.image}
         alt=""
