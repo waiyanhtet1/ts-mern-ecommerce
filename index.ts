@@ -1,14 +1,18 @@
 import cors from "cors";
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
-import { sampleProducts } from "./utils/sampleProduct";
+import express, { Express } from "express";
+import connectDB from "./config/dbConfig";
+import productsRoute from "./routes/proudctRoute";
 
 //For env File
 dotenv.config();
 
-const app: Express = express();
-const port = process.env.PORT || 8000;
+// DB connect
+connectDB();
 
+const app: Express = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     credentials: true,
@@ -16,9 +20,9 @@ app.use(
   })
 );
 
-app.get("/api/products", (req: Request, res: Response) => {
-  res.send(sampleProducts);
-});
+app.use("/api/products", productsRoute);
+
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);
